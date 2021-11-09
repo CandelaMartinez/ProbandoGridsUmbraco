@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Us>
+@using ContentModels = Umbraco.Web.PublishedModels;
+
+@if (!String.IsNullOrEmpty(Model.UsTitle)) 
+{ 
+    <div>@Model.UsTitle</div>
+
+}
+
+@if (Model.UsText!=null) 
+{
+    <div>
+        <p>@Model.UsText</p>
+    </div>
+}
+
+@if (Model.UsImage != null) 
+{
+   
+        var imgUrl = Model.UsImage.Url();
+    
+    <div>
+        <img src="@imgUrl" width="500" />
+    </div>
+
+}

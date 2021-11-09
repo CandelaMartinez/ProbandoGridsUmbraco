@@ -1,0 +1,64 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.BlogItem>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+@{
+    Layout = "Master.cshtml";
+
+    var imgCropper = Model.Value<ImageCropperValue>("BlogImage");
+    var imgUrl = imgCropper.Src;
+    var mainUrl = imgUrl + imgCropper.GetCropUrl("Main");
+
+}
+
+
+<article class="container">
+    <header class="text-center">
+        <div class="row">
+            <div class="col">
+                <h1>@Model.BlogTitle</h1>
+                <div>
+                    <ul style="list-style: none">
+                        <li>
+                            <i class="fa fa-user"></i> by @Model.BlogAuthor
+                        </li>
+                        <li>
+                            <i class="fa fa-calendar"></i>@Model.BlogPostDate.ToString("dd-MMM-yyyy")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+               
+
+                <img src="@mainUrl" class="w-100" />
+            </div>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col">
+            <p>@Model.BlogText</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="row">
+            <div class="col">
+                <div><span>Author: <strong>@Model.BlogAuthor</strong></span></div>
+                <div><span>Categories: @string.Join(", ", Model.BlogItemCategories)</span></div>
+            </div>
+        </div>
+
+    </footer>
+</article>
+
+
+
+
+
+
+
+
+

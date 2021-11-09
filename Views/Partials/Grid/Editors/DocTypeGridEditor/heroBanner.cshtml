@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.HeroBannerGridEditor>
+@using ContentModels = Umbraco.Web.PublishedModels;
+
+  @{
+      var imgUrl="";
+      var title="";
+      var subtitle = "";
+
+
+
+   }
+      @if (!String.IsNullOrEmpty(Model.HeroBannerGridEditorTitle))
+      {
+          title = Model.HeroBannerGridEditorTitle;
+      }
+
+@if (!String.IsNullOrEmpty(Model.HeroBannerGridEditorSubtitle))
+{
+    subtitle = Model.HeroBannerGridEditorSubtitle;
+}
+
+@if (Model.HeroBannerGridEditorImage != null)
+{
+   imgUrl = Model.HeroBannerGridEditorImage.Url();
+
+
+}
+
+<div class="jumbotron jumbotron-fluid home-hero" style="background-image:url(@imgUrl)">
+    <div class="inner">
+        <div class="container">
+            <h1 class="display-4">@title</h1>
+            <p class="lead">@subtitle</p>
+        </div>
+    </div>
+</div>

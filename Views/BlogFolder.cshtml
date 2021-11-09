@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.BlogFolder>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+@{
+    Layout = "Master.cshtml";
+}
+
+
+
+@{Html.RenderAction("BlogItemList", "BlogFolderSurface", new { Id = Model.Id }); }
+
+
+

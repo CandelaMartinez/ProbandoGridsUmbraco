@@ -1,0 +1,47 @@
+﻿
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedModels;
+
+
+@{ Layout = "Master.cshtml";
+    var imgUrl = "";
+
+    if (Model.HeroBannerHomePropertyImage!= null)
+
+    {
+        imgUrl = Model.HeroBannerHomePropertyImage.Url();
+
+
+    }
+
+}
+
+@*@{Html.RenderAction("HeroBannerImage", "HeroBannerSurface", new {Id = Model.Id }); }*@
+
+
+<div class="jumbotron jumbotron-fluid home-hero" style="background-image:url(@imgUrl)">
+    <div class="inner">
+        <div class="container">
+            <h1 class="display-4">@Model.HeroBannerHomePropertyTitle</h1>
+            <p class="lead">@Model.HeroBannerHomePropertySubtitle</p>
+        </div>
+    </div>
+</div>
+
+
+
+@Html.Partial("CallToAction")
+
+<h1>@Model.Value("tituloHome")</h1>
+
+<p>@Model.Value("textoDeHome")</p>
+
+<p>@Model.Value("pageContentText")</p>
+
+
+
+@Html.Partial("LastestItems")
+
+
+
+

@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.AboutDosGrid>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.GetGridHtml(Model,"aboutDosGridProperty","Bootstrap3")
+
+@if(@Model.Value("aboutDosTexto")!=null){
+
+    <div><p>@Model.Value("aboutDosTexto")</p></div>
+}

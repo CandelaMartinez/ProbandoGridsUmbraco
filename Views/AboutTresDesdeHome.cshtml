@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.AboutTresDesdeHome>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+
+}
+
+
+
+@{Html.RenderAction("GetHeroDesdeHome", "HeroDesdeHomeSurface", new { Id = Model.Id }); }
+
+<div>
+    <p>
+        @if (Model.AboutTresText != null)
+        {
+
+            @Model.AboutTresText;
+        }
+
+    </p>
+</div>

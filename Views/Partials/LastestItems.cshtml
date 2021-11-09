@@ -1,0 +1,41 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+
+@{ var blog = Umbraco.Content(Guid.Parse("1c6447c2-1d13-4b12-a25a-9fdd405a79db"))
+                              .ChildrenOfType("blogItem")
+                              .Where(x => x.IsVisible());
+}
+
+
+
+<!--container para todos los cards-->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card-deck">
+
+                <!--creo un card por cada news item-->
+                @foreach (var item in blog)
+                {
+                    //traigo la image cropper, importo value convertors
+                    var imgCropper = item.Value<ImageCropperValue>("BlogImage");
+                    //accedo a la imagen Thumb
+                    var smallUrl = imgCropper.Src + imgCropper.GetCropUrl("Small");
+                    //codigo traido de bootstrap card
+
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="@smallUrl" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                        </div>
+
+                        <div>
+                            <a href="@item.Url">Read more..</a>
+                        </div>
+
+                    </div>}
+
+            </div>
+        </div>
+    </div>
+</div>

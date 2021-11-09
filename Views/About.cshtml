@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.About>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+}
+@{Html.RenderAction("HeroBannerImage", "HeroBannerSurface", new { Id = Model.Id }); }
+
+<h1>@Model.Value("aboutTitle")</h1>
+
+<p>@Model.Value("pageContentText")</p>
+
+@Html.GetGridHtml(Model, "us", "Bootstrap3")

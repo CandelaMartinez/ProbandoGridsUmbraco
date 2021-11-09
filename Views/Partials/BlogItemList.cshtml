@@ -1,0 +1,41 @@
+﻿@model PruebaUmbracoComposition.Web.ViewModel.BlogFolderViewModel
+<h1>@Model.BlogFTitle</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        @foreach (var item in Model.Lista)
+                        {
+                            var imgCropper = item.BlogImage;
+                            var imgUrl = imgCropper.Src;
+                            var smallUrl = imgUrl + imgCropper.GetCropUrl("Small");
+
+                            <div class="card mt-25 mb-25">
+                                <a class="text-decoration-none" href="@item.Url()">
+                                    <div class="card">
+                                        <div>
+                                            <img src="@smallUrl" />
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="card-title">@item.BlogTitle</h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
